@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hamburgueria Explosão</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background-color: #38254f;
+            color: #222;
+            font-family: Arial, sans-serif;
+        }
+
+        /* CABEÇALHO */
+
+        .topo {
+            background-color: #21152f;
+            color: white;
+            padding: 18px 4%;
+        }
+
+        .logo {
+            color: white;
+            font-size: 25px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #9bcfff;
+        }
+
+        .barra-pesquisa {
+            display: flex;
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .barra-pesquisa input {
+            width: 100%;
+            padding: 11px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+        }
+
+        .barra-pesquisa button {
+            border-radius: 0 5px 5px 0;
+        }
+
+        .navegacao {
+            background-color: #2c1d3d;
+            padding: 12px 4%;
+        }
+
+        .navegacao a {
+            color: white;
+            text-decoration: none;
+            margin-right: 25px;
+            font-weight: bold;
+        }
+
+        .navegacao a:hover {
+            color: #9bcfff;
+        }
+
+        /* BOTÕES */
+
+        .btn-azul {
+            background-color: #9bcfff;
+            color: #172536;
+            border: 1px solid #7bb9ed;
+            padding: 10px 16px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-azul:hover {
+            background-color: #70b8f3;
+            color: #102033;
+        }
+
+        /* CONTEÚDO */
+
+        .container-principal {
+            width: 94%;
+            max-width: 1400px;
+            margin: 25px auto;
+        }
+
+        .banner {
+            background: linear-gradient(120deg, #241531, #68458b);
+            color: white;
+            padding: 45px 30px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+
+        .banner h1 {
+            font-size: 38px;
+            font-weight: bold;
+        }
+
+        .secao {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+
+        .titulo-secao {
+            font-size: 25px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #302040;
+        }
+
+        .produto {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            height: 100%;
+            background-color: white;
+            text-align: center;
+        }
+
+        .produto-imagem {
+            background-color: #f1eafa;
+            font-size: 65px;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+
+        .produto h4 {
+            font-size: 19px;
+            font-weight: bold;
+        }
+
+        .preco {
+            color: #168044;
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        .card-painel {
+            background-color: white;
+            border-radius: 8px;
+            padding: 22px;
+            height: 100%;
+        }
+
+        .codigo-destaque {
+            color: #563879;
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+        .promocao {
+            background-color: #efe3ff;
+            color: #39234f;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            font-weight: bold;
+            min-height: 75px;
+        }
+
+        .notificacao {
+            background-color: #e5f3ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 12px;
+        }
+
+        .lista-painel {
+            padding-left: 20px;
+        }
+
+        .lista-painel li {
+            margin-bottom: 6px;
+        }
+
+        /* RODAPÉ */
+
+        .voltar-topo {
+            display: block;
+            width: 100%;
+            padding: 17px;
+            background-color: #49315f;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .voltar-topo:hover {
+            background-color: #60417b;
+            color: white;
+        }
+
+        .rodape {
+            background-color: #21152f;
+            color: white;
+            padding: 35px 5%;
+        }
+
+        .rodape h4 {
+            color: #9bcfff;
+            font-size: 19px;
+            margin-bottom: 15px;
+        }
+
+        .rodape p,
+        .rodape li {
+            color: #e1d8eb;
+        }
+
+        .rodape a {
+            color: #9bcfff;
+            text-decoration: none;
+        }
+
+        .rodape a:hover {
+            text-decoration: underline;
+        }
+
+        .rodape-final {
+            background-color: #160e20;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .rodape .form-control,
+        .rodape .form-select {
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .topo {
+                text-align: center;
+            }
+
+            .barra-pesquisa {
+                margin: 15px auto;
+            }
+
+            .navegacao a {
+                display: inline-block;
+                margin: 5px 10px;
+            }
+
+            .banner h1 {
+                font-size: 29px;
+            }
+        }
+    </style>
+</head>
+
+<body id="inicio">
+
+    <!-- CABEÇALHO -->
+    <header class="topo">
+
+        <div class="container-fluid">
+            <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+
+                <a href="#inicio" class="logo">
+                    Hamburgueria <span>Explosão</span>
+                </a>
+
+                <div class="barra-pesquisa">
+                    <input type="text" id="pesquisaProduto"
+                        placeholder="Pesquisar hambúrgueres e produtos...">
+
+                    <button class="btn-azul" id="btnPesquisar">
+                        Pesquisar
+                    </button>
+                </div>
+
+                <div>
+                    <span>🛒 Pedido: </span>
+                    <strong id="contadorPedido">0</strong>
+                </div>
+
+                <div>
+                    <label for="idioma">Idioma:</label>
+                    <select id="idioma" class="form-select form-select-sm">
+                        <option value="pt">Português</option>
+                        <option value="en">English</option>
+                        <option value="es">Español</option>
+                    </select>
+                </div>
+
+            </div>
+        </div>
+
+    </header>
+
+    <!-- MENU DE NAVEGAÇÃO -->
+    <nav class="navegacao">
+        <a href="#cardapio">Cardápio</a>
+        <a href="#clientes">Atendimento</a>
+        <a href="#agendamento">Agendamento</a>
+        <a href="#promocoes">Promoções</a>
+        <a href="#avaliacao">Avaliações</a>
+        <a href="#sobre">Sobre nós</a>
+    </nav>
+
+    <main class="container-principal">
+
+        <!-- BANNER PRINCIPAL -->
+        <section class="banner">
+            <h1>Bem-vindo à Hamburgueria Explosão!</h1>
+
+            <p>
+                Hambúrgueres preparados com muito sabor para transformar
+                sua fome em uma experiência incrível.
+            </p>
+
+            <a href="#cardapio" class="btn-azul">
+                Conheça nosso cardápio
+            </a>
+        </section>
+
+        <!-- CARDÁPIO -->
+        <section class="secao" id="cardapio">
+
+            <h2 class="titulo-secao">🍔 Nosso Cardápio</h2>
+
+            <p>Confira algumas opções da Hamburgueria Explosão.</p>
+
+            <div class="row g-3" id="listaProdutos">
+
+                <div class="col-md-3 produto-coluna">
+                    <div class="produto" data-nome="Explosão Clássico">
+                        <div class="produto-imagem">🍔</div>
+                        <h4>Explosão Clássico</h4>
+                        <p>Hambúrguer, queijo, alface, tomate e molho especial.</p>
+                        <p class="preco">R$ 24,90</p>
+                        <button class="btn-azul adicionarPedido"
+                            data-produto="Explosão Clássico">
+                            Adicionar ao pedido
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-md-3 produto-coluna">
+                    <div class="produto" data-nome="Explosão Bacon">
+                        <div class="produto-imagem">🍔</div>
+                        <h4>Explosão Bacon</h4>
+                        <p>Hambúrguer, queijo, bacon e molho da casa.</p>
+                        <p class="preco">R$ 29,90</p>
+                        <button class="btn-azul adicionarPedido"
+                            data-produto="Explosão Bacon">
+                            Adicionar ao pedido
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-md-3 produto-coluna">
+                    <div class="produto" data-nome="Explosão Duplo">
+                        <div class="produto-imagem">🍔</div>
+                        <h4>Explosão Duplo</h4>
+                        <p>Dois hambúrgueres, queijo e molho especial.</p>
+                        <p class="preco">R$ 34,90</p>
+                        <button class="btn-azul adicionarPedido"
+                            data-produto="Explosão Duplo">
+                            Adicionar ao pedido
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-md-3 produto-coluna">
+                    <div class="produto" data-nome="Batata Explosiva">
+                        <div class="produto-imagem">🍟</div>
+                        <h4>Batata Explosiva</h4>
+                        <p>Porção de batatas fritas crocantes.</p>
+                        <p class="preco">R$ 16,90</p>
+                        <button class="btn-azul adicionarPedido"
+                            data-produto="Batata Explosiva">
+                            Adicionar ao pedido
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- PROMOÇÕES E NOTÍCIAS -->
+        <section class="secao" id="promocoes">
+
+            <h2 class="titulo-secao">🔥 Promoções e novidades</h2>
+
+            <div id="areaPromocoes" class="promocao">
+                Confira nossas promoções!
+            </div>
+
+            <h4 class="mt-4">Notícias e comunicados</h4>
+            <ul id="areaNoticias" class="lista-painel"></ul>
+
+            <hr>
+
+            <h4>Área de administração de conteúdo</h4>
+
+            <label for="novaNoticia">Nova notícia:</label>
+            <textarea id="novaNoticia" class="form-control mb-2"
+                placeholder="Digite uma notícia ou comunicado"></textarea>
+
+            <button id="btnAdicionarNoticia" class="btn-azul">
+                Publicar notícia
+            </button>
+
+            <label for="novaPromocao" class="mt-3">Nova promoção:</label>
+            <input type="text" id="novaPromocao" class="form-control mb-2"
+                placeholder="Digite uma promoção">
+
+            <button id="btnAdicionarPromocao" class="btn-azul">
+                Publicar promoção
+            </button>
+
+        </section>
+
+        <!-- ATENDIMENTO DE CLIENTES -->
+        <section class="secao" id="clientes">
+
+            <h2 class="titulo-secao">🎟️ Atendimento de clientes</h2>
+
+            <div class="row g-4">
+
+                <!-- RETIRADA DE CLIENTE -->
+                <div class="col-md-4">
+                    <div class="card-painel">
+
+                        <h4>Retirar identificação</h4>
+
+                        <label for="nomeCliente">Nome do cliente:</label>
+                        <input type="text" id="nomeCliente" class="form-control mb-3"
+                            placeholder="Digite seu nome">
+
+                        <button id="btnClienteComum" class="btn-azul w-100 mb-2">
+                            Entrar na fila comum
+                        </button>
+
+                        <button id="btnClienteVip" class="btn-azul w-100">
+                            Entrar na fila VIP
+                        </button>
+
+                        <hr>
+
+                        <h5>Seu código de atendimento:</h5>
+                        <h2 id="ultimoCliente" class="codigo-destaque">---</h2>
+
+                        <h5>Últimos clientes:</h5>
+                        <ul id="listaClientes" class="lista-painel"></ul>
+
+                    </div>
+                </div>
+
+                <!-- CHAMADA -->
+                <div class="col-md-4">
+                    <div class="card-painel text-center">
+
+                        <h4>Cliente em atendimento</h4>
+
+                        <h1 id="clienteAtual" class="codigo-destaque">Nenhum</h1>
+
+                        <p id="nomeEmAtendimento">Aguardando atendimento</p>
+
+                        <div id="notificacaoProxima" class="notificacao">
+                            Nenhum cliente chamado.
+                        </div>
+
+                        <button id="btnChamarProximo" class="btn-azul w-100 mt-3">
+                            Chamar próximo cliente
+                        </button>
+
+                        <button id="btnFinalizar" class="btn-azul w-100 mt-2">
+                            Finalizar atendimento
+                        </button>
+
+                        <hr>
+
+                        <p>Clientes VIP aguardando: <strong id="qtdVip">0</strong></p>
+                        <p>Clientes comuns aguardando: <strong id="qtdComuns">0</strong></p>
+
+                    </div>
+                </div>
+
+                <!-- HISTÓRICO -->
+                <div class="col-md-4">
+                    <div class="card-painel">
+
+                        <h4>Painel de chamadas</h4>
+
+                        <h5>Último cliente chamado:</h5>
+                        <h2 id="clientePainel" class="codigo-destaque">Nenhum</h2>
+
+                        <p id="nomePainel">Aguardando atendimento</p>
+
+                        <hr>
+
+                        <h5>Clientes atendidos:</h5>
+                        <ul id="listaAtendidas" class="lista-painel"></ul>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        
+<!-- VÍDEOS DA HAMBURGUERIA -->
+<section class="secao">
+
+    <h2 class="titulo-secao">🍔 Conheça nossa Hamburgueria</h2>
+
+    <video id="videoHamburgueria" class="w-100 rounded" controls autoplay muted>
+        <source src="videos/videoh1.mp4" type="video/mp4">
+        Seu navegador não suporta vídeos.
+    </video>
+
+</section>
+
+
+        <!-- AGENDAMENTO -->
+        <section class="secao" id="agendamento">
+
+            <h2 class="titulo-secao">📅 Agendamento</h2>
+
+            <label for="nomeAgendamento">Nome:</label>
+            <input type="text" id="nomeAgendamento" class="form-control mb-2">
+
+            <label for="dataAgendamento">Data:</label>
+            <input type="date" id="dataAgendamento" class="form-control mb-2">
+
+            <label for="horaAgendamento">Horário:</label>
+            <input type="time" id="horaAgendamento" class="form-control mb-3">
+
+            <button id="btnAgendar" class="btn-azul">
+                Realizar agendamento
+            </button>
+
+            <h4 class="mt-4">Agendamentos registrados:</h4>
+            <ul id="listaAgendamentos" class="lista-painel"></ul>
+
+        </section>
+
+        
+
+    </main>
+
+    <!-- BOTÃO VOLTAR AO INÍCIO -->
+    <a href="#inicio" class="voltar-topo">
+        ↑ Voltar ao início
+    </a>
+
+    <!-- RODAPÉ / SOBRE A EMPRESA -->
+    <footer class="rodape" id="sobre">
+
+        <div class="container-fluid">
+
+            <div class="row g-4">
+
+                <!-- SOBRE -->
+                <div class="col-md-4">
+
+                    <h4>Sobre a Hamburgueria Explosão</h4>
+
+                    <p>
+                        A Hamburgueria Explosão nasceu com a proposta de oferecer
+                        hambúrgueres saborosos, preparados com dedicação e ingredientes
+                        selecionados.
+                    </p>
+
+                    <p>
+                        Nosso objetivo é proporcionar uma experiência agradável,
+                        com qualidade, bom atendimento e muito sabor.
+                    </p>
+
+                    <p>
+                        <strong>Missão:</strong> oferecer refeições saborosas e um
+                        atendimento de qualidade.
+                    </p>
+
+                    <p>
+                        <strong>Visão:</strong> ser reconhecida pela qualidade
+                        dos produtos e pela satisfação dos clientes.
+                    </p>
+
+                    <p>
+                        <strong>Valores:</strong> respeito, qualidade, dedicação
+                        e compromisso com o cliente.
+                    </p>
+
+                </div>
+
+                <!-- UNIDADES -->
+                <div class="col-md-4">
+
+                    <h4>Nossas unidades</h4>
+
+                    <label for="selecionarFilial">Selecione uma unidade:</label>
+
+                    <select id="selecionarFilial" class="form-select">
+                        <option value="0">Unidade Centro</option>
+                        <option value="1">Unidade Norte</option>
+                        <option value="2">Unidade Sul</option>
+                    </select>
+
+                    <p><strong>Unidade:</strong> <span id="nomeFilial">Unidade Centro</span></p>
+
+                    <p><strong>Endereço:</strong> <span id="enderecoFilial">Endereço a cadastrar</span></p>
+
+                    <p><strong>Telefone:</strong> <span id="telefoneFilial">(11) 0000-0000</span></p>
+
+                    <p><strong>Funcionamento:</strong> <span id="horarioFilial">Segunda a domingo, das 18h às 23h</span></p>
+
+                </div>
+
+                <!-- CONTATO -->
+                <div class="col-md-4">
+
+                    <h4>Entre em contato</h4>
+
+                    <p>
+                        <strong>E-mail:</strong><br>
+                        <a href="mailto:contato@hamburgueriaexplosao.com.br">
+                            contato@hamburgueriaexplosao.com.br
+                        </a>
+                    </p>
+
+                    <p>
+                        <strong>Atendimento:</strong><br>
+                        Consulte o horário de funcionamento da unidade escolhida.
+                    </p>
+
+                    <p>
+                        <strong>Redes sociais:</strong><br>
+                        <a href="#sobre">Instagram</a> |
+                        <a href="#sobre">Facebook</a>
+                    </p>
+
+                </div>
+
+            </div>
+
+            <hr style="border-color: #8c79a0;">
+
+            <!-- AVALIAÇÃO -->
+            <div class="row mt-4" id="avaliacao">
+
+                <div class="col-md-8 mx-auto">
+
+                    <h4 class="text-center">⭐ Avalie nosso atendimento</h4>
+
+                    <p class="text-center">
+                        Sua opinião é importante para melhorar nossos serviços.
+                    </p>
+
+                    <label for="notaAvaliacao">Sua nota:</label>
+
+                    <select id="notaAvaliacao" class="form-select">
+                        <option value="5">5 - Excelente</option>
+                        <option value="4">4 - Muito bom</option>
+                        <option value="3">3 - Bom</option>
+                        <option value="2">2 - Regular</option>
+                        <option value="1">1 - Ruim</option>
+                    </select>
+
+                    <label for="comentarioAvaliacao">Comentário:</label>
+
+                    <textarea id="comentarioAvaliacao" class="form-control"
+                        placeholder="Conte como foi sua experiência"></textarea>
+
+                    <button id="btnAvaliar" class="btn-azul mt-2">
+                        Enviar avaliação
+                    </button>
+
+                    <h5 class="mt-4">Avaliações recebidas:</h5>
+                    <ul id="listaAvaliacoes" class="lista-painel"></ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <div class="rodape-final">
+        Hamburgueria Explosão - Todos os direitos reservados.
+    </div>
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>
